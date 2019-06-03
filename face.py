@@ -8,49 +8,49 @@ from pynput.mouse import Button, Listener
 import pyautogui as pgui
 from bluetooth import *
 
-print("‹N“®’†")
+print("èµ·å‹•ä¸­")
 
 ENDPOINT_URL = 'ENDPOINT_URL'
 API_KEY = 'API_KEY'
 capture = cv2.VideoCapture(0)
-print("Š®—¹")
+print("å®Œäº†")
 
 def facedetector_gcv(img, image_path, max_results, response):
     result = ''
-    # base64convert—p‚É“Ç‚İ‚Ş
+    # base64convertç”¨ã«èª­ã¿è¾¼ã‚€
     image = open(image_path, 'rb').read()
 
-    # Šç‚ğŒŸo‚·‚é‚â‚Â‚ÌResponseì¬
-    # •Ô‚è’l—p
+    # é¡”ã‚’æ¤œå‡ºã™ã‚‹ã‚„ã¤ã®Responseä½œæˆ
+    # è¿”ã‚Šå€¤ç”¨
     s = ''
-    # 'faceAnnotations'‚ª‚ ‚ê‚ÎŠç‚ ‚è
+    # 'faceAnnotations'ãŒã‚ã‚Œã°é¡”ã‚ã‚Š
     if 'faceAnnotations' in response.json()['responses'][0]:
         print('test')
         faces = response.json()['responses'][0]['faceAnnotations']
 
-        # ‰æ‘œî•ñ
+        # ç”»åƒæƒ…å ±
         s += image_path + ' '
         s+= response.text
-        # OpenCV‚Å‹éŒ`‚ğ‘‚«‚İ
+        # OpenCVã§çŸ©å½¢ã‚’æ›¸ãè¾¼ã¿
         for face in faces:
 
-            #ÎŠç‚È‚ç‚Î¶–îˆó“ü—Í
+            #ç¬‘é¡”ãªã‚‰ã°å·¦çŸ¢å°å…¥åŠ›
             if face['joyLikelihood'] == 'VERY_LIKELY' or face['joyLikelihood'] == 'LIKELY':
                 result = 'true'
             else:
                 result = 'false'
                 
                 
-            # 0‚Æ2‚ª—¼’[‚Ì”Ô’n
+            # 0ã¨2ãŒä¸¡ç«¯ã®ç•ªåœ°
 #            x = face['fdBoundingPoly']['vertices'][0]['x']
 #            y = face['fdBoundingPoly']['vertices'][0]['y']
 #            x2 = face['fdBoundingPoly']['vertices'][2]['x']
 #            y2 = face['fdBoundingPoly']['vertices'][2]['y']
 #            cv2.rectangle(img, (x, y), (x2, y2), (0, 0, 255), thickness=10)
-            # ‹éŒ`î•ñ‚ğ•Û‘¶
+            # çŸ©å½¢æƒ…å ±ã‚’ä¿å­˜
 
-    # ‹éŒ`‚ª‘‚«‚Ü‚ê‚½‰æ‘œ‚Æs = 'file_name x1 y1 x2 y2'
-    # Šç‚ª–³‚¯‚ê‚Îs‚Í‹ó
+    # çŸ©å½¢ãŒæ›¸ãè¾¼ã¾ã‚ŒãŸç”»åƒã¨s = 'file_name x1 y1 x2 y2'
+    # é¡”ãŒç„¡ã‘ã‚Œã°sã¯ç©º
     return img, s, result
 
 def image_capture():
@@ -85,7 +85,7 @@ def image_capture():
     #   for idx, resp in enumerate(response.json()['responses']):
     #      print(json.dumps(resp, indent=2))
     #if 'faceAnnotations' in response.json()['responses'][0]:
-    # ‰æ‘œ“Ç‚İ‚İ
+    # ç”»åƒèª­ã¿è¾¼ã¿
 
     image_path = 'image.jpg'
 #    max_results = 8
@@ -95,7 +95,7 @@ def image_capture():
     # Google API
 #    img, s, result = facedetector_gcv(img, sample_img_path, max_results, response)
 
-    # ‰æ‘œo—Í
+    # ç”»åƒå‡ºåŠ›
 #    cv2.imwrite('output_' + sample_img_path, img)
 
 
@@ -105,20 +105,20 @@ def image_capture():
         print('detected')
         faces = response.json()['responses'][0]['faceAnnotations']
 
-        # ‰æ‘œî•ñ
+        # ç”»åƒæƒ…å ±
         s += image_path + ' '
         s+= response.text
-        # OpenCV‚Å‹éŒ`‚ğ‘‚«‚İ
+        # OpenCVã§çŸ©å½¢ã‚’æ›¸ãè¾¼ã¿
         for face in faces:
 
-            #ÎŠç‚È‚ç‚Î¶–îˆó“ü—Í
+            #ç¬‘é¡”ãªã‚‰ã°å·¦çŸ¢å°å…¥åŠ›
             if face['joyLikelihood'] == 'VERY_LIKELY' or face['joyLikelihood'] == 'LIKELY':
                 result = 'true'
             else:
                 result = 'false'
 
             
-        # ‹éŒ`î•ño—Í
+        # çŸ©å½¢æƒ…å ±å‡ºåŠ›
         f = open('./rect2.txt', 'w')
         f.write(s)
         f.close()
@@ -139,9 +139,9 @@ def on_click(x, y, button, pressed):
             image_capture()
 
 if __name__ == '__main__':
-    print ('ƒ}ƒEƒX“ü—Í[m] or ƒXƒ}ƒzBluetooth[other word]')
+    print ('ãƒã‚¦ã‚¹å…¥åŠ›[m] or ã‚¹ãƒãƒ›Bluetooth[other word]')
     input_word = input()
-    if(input_word == 'm'):    
+    if(input_word != 'm'):    
         server_sock=BluetoothSocket( RFCOMM )
         server_sock.bind(("",PORT_ANY))
         server_sock.listen(1)
@@ -186,6 +186,6 @@ if __name__ == '__main__':
         client_sock.close()
         server_sock.close()
     else:
-        print("ƒ}ƒEƒXƒ‚[ƒh‚É‚µ‚Ü‚µ‚½BƒzƒC[ƒ‹ƒ{ƒ^ƒ“ƒNƒŠƒbƒN‚Å¯•Ê‚µ‚Ü‚·")
+        print("ãƒã‚¦ã‚¹ãƒ¢ãƒ¼ãƒ‰ã«ã—ã¾ã—ãŸã€‚ãƒ›ã‚¤ãƒ¼ãƒ«ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã§è­˜åˆ¥ã—ã¾ã™")
         with Listener(on_move=on_move,on_click=on_click,on_scroll=on_scroll) as listener:
             listener.join()
